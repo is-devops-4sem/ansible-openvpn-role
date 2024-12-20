@@ -1,0 +1,26 @@
+---
+openvpn_packages:
+  - openvpn
+  - easy-rsa
+
+openvpn_config_path: /etc/openvpn/
+easy_rsa_path: /etc/openvpn/easy-rsa
+easy_rsa_pki_path: /etc/openvpn/easy-rsa/pki
+
+openvpn_server_ip: "192.168.56.202"
+openvpn_port: 1194
+openvpn_proto: udp
+openvpn_dev: tun
+openvpn_user: nobody
+openvpn_group: nogroup
+openvpn_server_subnet: "10.15.0.0 255.255.255.0"
+openvpn_ca: "/etc/openvpn/ca.crt"
+openvpn_cert: "/etc/openvpn/server.crt"
+openvpn_key: "/etc/openvpn/server.key"
+openvpn_dh: "/etc/openvpn/dh.pem"
+openvpn_status_log: "/var/log/openvpn/openvpn-status.log"
+openvpn_log: "/var/log/openvpn/openvpn.log"
+openvpn_persist_key: true
+openvpn_persist_tun: true
+openvpn_keepalive: "10 120"
+openvpn_cipher: "AES-256-CBC"
