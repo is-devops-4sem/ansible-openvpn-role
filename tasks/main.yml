@@ -126,8 +126,8 @@
     dest: /etc/openvpn/server.conf
   become: yes
 
-- name: Check if OpenVPN is running
-  shell: pgrep -f "openvpn --config /etc/openvpn/server.conf"
+- name: Check if OpenVPN is running with specific config and any additional parameters
+  shell: pgrep -f "openvpn.*--config /etc/openvpn/server.conf.*"
   register: openvpn_process
   ignore_errors: true
   changed_when: false
