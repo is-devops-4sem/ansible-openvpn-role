@@ -127,19 +127,17 @@
   become: yes
 
 - name: Check if OpenVPN is running
-  systemd:
-    name: openvpn@server
-    state: started
+  shell: pgrep -f "openvpn --config /etc/openvpn/server.conf"
   register: openvpn_process
   ignore_errors: true
   changed_when: false
 
-- name: Start OpenVPN server manually if not running
+- name: Start OpenVPN manually if not running
   command: openvpn --config /etc/openvpn/server.conf
   async: 30
   poll: 0
   become: yes
-  when: openvpn_process.status != "started"
+  when: openvpn_process.rc != 0
 
 - name: Create client configuration file
   template:
