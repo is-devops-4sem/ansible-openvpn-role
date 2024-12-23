@@ -158,6 +158,7 @@
     path: "{{ ansible_env.HOME }}/artifacts"
     state: directory
     mode: '0755'
+  become: yes
 
 - name: Fetch client.ovpn file to local machine
   fetch:
