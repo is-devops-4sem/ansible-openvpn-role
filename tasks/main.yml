@@ -138,29 +138,9 @@
   poll: 0
   become: yes
   when: openvpn_process.rc != 0
-  
-- name: Create destination directory on remote machine
-  file:
-    path: "/tmp/artifacts"
-    state: directory
-    mode: '0755'
-  become: yes
-  
+    
 - name: Create client configuration file
   template:
     src: client.ovpn.j2
     dest: "/tmp/artifacts/client.ovpn"
   become: yes
-
-- name: Create destination directory on local machine
-  local_action:
-    module: file
-    path: "{{ ansible_env.HOME }}/artifacts"
-    state: directory
-    mode: '0755'
-  become: yes
-
-- name: Fetch client.ovpn file to local machine
-  fetch:
-    src: /tmp/artifacts/client.ovpn
-    dest: "{{ ansible_env.HOME }}/artifacts/client.ovpn"
