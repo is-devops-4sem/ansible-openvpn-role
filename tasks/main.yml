@@ -138,8 +138,27 @@
   poll: 0
   become: yes
   when: openvpn_process.rc != 0
+  
+- name: Create destination directory on remote machine
+  file:
+    path: "./artifacts"
+    state: directory
+    mode: '0755'
+
+- name: Create destination directory on local machine
+  local_action:
+    module: file
+    path: "./artifacts"
+    state: directory
+    mode: '0755'
 
 - name: Create client configuration file
   template:
     src: client.ovpn.j2
-    dest: "client.ovpn"
+    dest: "./artifacts/client.ovpn"
+
+- name: Fetch client.ovpn file to local machine
+  fetch:
+    src: "./artifacts/client.ovpn"
+    dest: "./artifacts/client.ovpn"
+
