@@ -122,7 +122,7 @@
 
 - name: Apply OpenVPN server configuration
   template:
-    src: server.conf.j2
+    src: "{{ openvpn_server_conf }}"
     dest: /etc/openvpn/server.conf
   become: yes
 
@@ -148,7 +148,7 @@
 
 - name: Create client configuration file
   template:
-    src: client.ovpn.j2
+    src: "{{ openvpn_client_conf }}"
     dest: "/tmp/artifacts/client.ovpn"
   become: yes
 
