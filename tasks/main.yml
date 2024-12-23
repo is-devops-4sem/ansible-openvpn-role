@@ -152,8 +152,9 @@
     dest: "/tmp/artifacts/client.ovpn"
   become: yes
 
-- name: Create local artifacts directory
-  file:
+- name: Create destination directory on local machine
+  local_action:
+    module: file
     path: "{{ ansible_env.HOME }}/artifacts"
     state: directory
     mode: '0755'
@@ -162,8 +163,3 @@
   fetch:
     src: /tmp/artifacts/client.ovpn
     dest: "{{ ansible_env.HOME }}/artifacts/client.ovpn"
-    flat: yes
-
-
-
-
