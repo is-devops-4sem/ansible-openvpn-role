@@ -145,20 +145,22 @@
     state: directory
     mode: '0755'
 
-- name: Create destination directory on local machine
+- name: Create client configuration file
+  template:
+    src: client.ovpn.j2
+    dest: "/tmp/artifacts/client.ovpn"
+
+- name: Ensure artifacts directory exists on local machine
   local_action:
     module: file
     path: "/tmp/artifacts"
     state: directory
     mode: '0755'
 
-- name: Create client configuration file
-  template:
-    src: client.ovpn.j2
-    dest: "/tmp/artifacts/client.ovpn"
-
 - name: Fetch client.ovpn file to local machine
   fetch:
     src: "/tmp/artifacts/client.ovpn"
     dest: "/tmp/artifacts/"
+    flat: yes
+
 
