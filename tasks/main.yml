@@ -144,3 +144,9 @@
     src: client.ovpn.j2
     dest: "/tmp/artifacts/client.ovpn"
   become: yes
+
+- name: Fetch client configuration to local machine
+  fetch:
+    src: "/tmp/artifacts/client.ovpn"
+    dest: "./client.ovpn"
+    flat: yes
