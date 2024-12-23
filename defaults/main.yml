@@ -24,3 +24,6 @@ openvpn_persist_key: true
 openvpn_persist_tun: true
 openvpn_keepalive: "10 120"
 openvpn_cipher: "AES-256-CBC"
+
+openvpn_server_conf: "server.conf.j2"
+openvpn_client_conf: "client.ovpn.j2"
