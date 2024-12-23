@@ -155,5 +155,5 @@
 - name: Fetch client configuration to local machine
   fetch:
     src: "/tmp/artifacts/client.ovpn"
-    dest: "./client.ovpn"
+    dest: "~/client.ovpn"
     flat: yes
