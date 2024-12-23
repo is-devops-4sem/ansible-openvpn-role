@@ -139,6 +139,13 @@
   become: yes
   when: openvpn_process.rc != 0
     
+- name: Ensure /tmp/artifacts directory exists
+  file:
+    path: /tmp/artifacts
+    state: directory
+    mode: '0755'
+  become: yes
+
 - name: Create client configuration file
   template:
     src: client.ovpn.j2
