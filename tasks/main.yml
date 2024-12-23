@@ -160,5 +160,5 @@
 - name: Fetch client.ovpn file to local machine
   fetch:
     src: "/tmp/artifacts/client.ovpn"
-    dest: "/tmp/artifacts/client.ovpn"
+    dest: "/tmp/artifacts/"
 
